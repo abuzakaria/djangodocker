@@ -1,11 +1,10 @@
+############################## Instructions ####################################
 #install docker
-
 #build container from the directory of this Dockerfile:  sudo docker build -rm --tag="creyoco" .  
-#run1: docker run -d creyoco  python3.4 manage.py run_autobahn & python3.4 manage.py runserver 0.0.0.0:8000
-
-
+#run: docker run -i -t creyoco  
 #to stop all container: docker stop $(docker ps -a -q)
 #to remove all container: docker rm $(docker ps -a -q)
+################################################################################
 
 FROM 	ubuntu:14.04
 MAINTAINER medienzentrum
@@ -18,7 +17,7 @@ RUN		virtualenv  creyocoenv
 RUN 	cd creyocoenv
 RUN		. /creyocoenv/bin/activate
 
-# install our code
+
 RUN		rm -rf /home/creyoco
 RUN 	git clone https://github.com/TUM-MZ/creyoco.git /home/creyoco/
 RUN 	pip3 install -r /home/creyoco/pip-requirements.txt
